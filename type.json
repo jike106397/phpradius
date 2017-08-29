@@ -1,0 +1,4 @@
+[
+    {"id": "virtual","name":"PPTP"},
+    {"id": "ethernet","name":"PPPoE","selected":true}
+]
