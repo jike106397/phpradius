@@ -1,0 +1,255 @@
+@charset "UTF-8";
+@import url('common2.css');
+.main_topbg { background: #f6f6f6; padding-bottom: 30px }
+.form-group label { font-size: 14px; color: #7c7c7c; font-weight: normal !important }
+.form-control{background: none;}
+.shop .ntop { width: 100%; height: 70px; background: #0084ca url(../Images/login/registerTop.jpg) no-repeat }
+.shop-title { width: 1180px; overflow: hidden; padding: 20px 0 10px 0; margin: 0 auto }
+.shop-title h1 { float: left; display: inline; height: 44px; padding-left: 10px; font-size: 30px; line-height: 44px; color: #00addc }
+.shop-title .Rnav { float: right; margin-right: 30px; line-height: 44px }
+.shop-title .Rnav a { font-size: 12px; color: #717171; padding-right: 13px; background: url(../Images/shop/Rnav-bg.png) no-repeat right center }
+.shop-title .Rnav .last-a { background: none; padding-right: 0px }
+.w1180 { width: 1180px; overflow: hidden; margin: 0 auto }
+.shop .sub-menu { width: 217px; background: #f1f1f1; float: left; border-right: 1px solid #f6f6f6 }
+.shop .sub-menu dl { border-bottom: 1px solid #dddddd; padding: 6px 0 0 3px }
+.shop .sub-menu dt { font-size: 14px; color: #999; line-height: 35px; margin-left: 13px; text-indent: 22px; background: url(../Images/shop/subnav-icon.png) no-repeat; cursor: pointer }
+.shop .sub-menu dt i { float: right; width: 19px; height: 35px; margin-right: 8px; background: url(../Images/shop/subnav-toggle.png) no-repeat; -webkit-transition: all .2s ease; -moz-transition: all .2s ease; transition: all .2s ease }
+.shop .sub-menu dt i.irotate { -webkit-transform: rotate(180deg); transform: rotate(180deg) }
+.shop .sub-menu dd{ line-height: 35px; font-size: 14px; color: #666; text-indent: 50px; cursor: pointer }
+.shop .sub-menu dd a {display: block;color: #666;font-size: 14px;}
+.shop .sub-menu dd a:hover { color: #00addc }
+.shop .sub-menu dd.curr { background: #fff; border-right: 1px solid #fff; margin-right: -1px; color: #00addc }
+.shop .sub-menu dt.cloud-serv { background-position: 0 0 }
+.shop .sub-menu dt.cloud-host { background-position: 0 -35px }
+.shop .sub-menu dt.server-host { background-position: 0 -70px }
+.shop .sub-menu dt.server-lease { background-position: 0 -105px }
+.shop .sub-menu dt.domain { background-position: 0 -140px }
+.shop .sub-menu dt.tzyun { background-position: 0 -175px }
+.shop .sub-content { width: 963px; background: #fff; float: right; border-right: 1px solid #f6f6f6; padding: 20px }
+.shop .sub-content .sub-content-title { width: 100%; border-bottom: 1px solid #ccc; margin-bottom: 20px; padding-bottom: 10px}
+.shop .sub-content .sub-content-title .stitle { font-size: 20px; color: #3d3d3d; line-height: 30px }
+.server-info { width: 100%; background: rgba(0, 0, 0, 0.8); z-index: 10;position:relative; }
+.server-info-up { position: fixed !important; bottom: 0; -webkit-transition: all 0.7s; -moz-transition: all 0.7s; -ms-transition: all 0.7s; -o-transition: all 0.7s }
+.shop .sub-content .sub-content-title .tab-ul { display: inline-block; float: right; border-width: 1px 1px 0px; line-height: 20px }
+.shop .sub-content .sub-content-title .tab-ul li { float: left; font-size: 15px; padding: 10px 30px 9px 30px; margin-left: 10px; border-top: 2px solid #ccc; border-left: 1px solid #ccc; border-right: 1px solid #ccc; color: #737373; cursor: pointer }
+.shop .sub-content .sub-content-title .tab-ul li.on-tab-li { background: #fff; border-top: 2px solid #00addc; border-left: 1px solid #ccc; border-right: 1px solid #ccc }
+.server-info .server-info-mian { width: 1180px; margin: 0 auto; padding: 20px; overflow: hidden }
+.server-info .server-info-mian .info-title { font-size: 30px; color: #fff; float: left }
+.server-info .server-info-mian .info-detailed { width: 960px; float: right }
+.server-info .server-info-mian .info-detailed .cfg-items { width: 700px; font-size: 12px; color: #fff; overflow: hidden; float: left }
+.server-info .server-info-mian .info-detailed .cfg-items .dt { width: 350px; float: left; padding: 5px 0px }
+.server-info .server-info-mian .info-detailed .cfg-items .dt div { display: table-cell }
+.server-info .server-info-mian .info-detailed .cfg-items .dt .config-t { width: 55px; text-align: right }
+.server-info .server-info-mian .cart { width: 260px; height: 50px; padding: 5px; float: left }
+.server-info .server-info-mian .price { display: inline-block; margin: 0 20px; height: 40px; color: #fff; line-height: 40px; font-size: 16px }
+.server-info .server-info-mian .btn-cart { display: inline-block; padding: 10px 22px; font-size: 14px; color: #fff; background: #ff6600; border: 0 }
+.server-info .server-info-mian .btn-cart:hover { color: #fff }
+.server-info .server-info-mian .add-cart { background: #ffa366; margin-left: 3px }
+.cart { height: 50px; padding: 5px }
+.chanquan .radi { float: left; height: 34px; }
+.chanquan input[type=button] { float: left; width: 117px; height: 34px; text-align: center; line-height: 34px; background: #e0e0e0; color: #8c8c8c; border: 0 }
+.chanquan .radi .on { color: #fff; background: #ff964f }
+.nianxian { float: left }
+.cart .select_dropdown { width: 220px; margin: 0px auto; margin-left: 30px; margin-top: 6px }
+.cart .select_dropdown .btn { height: 34px; border-radius: 0px; background: url(../Images/selectordie_bj.png) no-repeat right 0px #ffffff; border: 1px solid #28caf0; padding: 5px 22px }
+.cart .select_dropdown .open > .dropdown-toggle.btn-default { background: url(../Images/selectordie_bj.png) no-repeat right 0px #ffffff; border: 1px solid #28caf0 }
+.cart .select_dropdown .dropdown-menu > li > a:hover,
+.content-list .select_dropdown .dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus { background: #28caf0; color: #fff }
+.cart .select_dropdown .dropdown-menu { background: #f1f1f1 }
+.price { width: 80px; display: inline-block; margin: 0 20px; height: 40px; color: #fff; line-height: 40px; font-size: 16px }
+.btn-cart { display: inline-block; padding: 10px 22px; font-size: 14px; color: #fff; background: #ff6600 }
+.btn-cart:hover { color: #fff }
+.add-cart { background: #ffa366; margin-left: 3px }
+..bgcolor { background: #f9f9f9 }
+
+.shop .sub-content .sub-item-main { padding: 20px 22px 0px 30px; margin-bottom: 20px;}
+.shop .sub-content .sub-item-main dl { line-height: 1.5 }
+.shop .sub-content .sub-item-main dl dt { display: inline-block; width: 80px; color: #00addc; font-size: 12px;  text-align: right;line-height: 30px; margin:5px 0; }
+.shop .sub-content .sub-item-main dl dd { display: inline-block; color: #333; cursor: pointer;line-height: 30px; margin:5px 0; }
+.shop .sub-content .sub-item-main dl dd a{color: #333;display: block;width: 100%; padding: 0 18px;}
+.shop .sub-content .sub-item-main dl dd.active { background: #00addc; color: #fff !important;}
+.shop .sub-content .sub-item-main dl dd.active a{color: #fff !important;}
+.shop .sub-content .sub-item-main dl dd:hover { color: #00addc }
+.shop .sub-content .sub-item-main .selected-dl dd { padding: 0 24px; height: 25px; line-height: 25px; background: #00addc; color: #fff; margin-right: 10px; cursor: pointer }
+.shop .sub-content .sub-item-main .selected-dl dd span { margin-left: -10px }
+.shop .sub-content .sub-item-main .selected-dl dd:hover { color: #fff }
+.shop .sub-content .sub-item-main .selected-dl dd i { position: absolute; font-size: 20px; color: #fff; margin-left: 5px }
+
+
+.shop .product-list .li { width: 100%; margin-bottom: 20px;border: 1px solid #e5e5e5; border-radius: 4px; }
+.shop .product-list .title-icon { width: 50px; height: 60px; background: url('../Images/shop/title_icon.png'); float: left;border-top-left-radius: 4px;margin-right: 20px;}
+.shop .product-list .title { width: 100%; height: 60px; line-height: 60px;  font-size: 24px; }
+.shop .product-list .title small{ font-size: 12px;margin-left: 15px;color: #999;}
+.shop .product-list .spmmain { width: 100%; overflow: hidden; padding: 10px 0px 20px 0px }
+.shop .product-list .spmmain .vhost_param { float: left; width: 635px;margin-left: 70px; overflow: hidden; font-size: 13px; }
+.shop .product-list .spmmain .vhost_param .sp1 { float: left; width: 300px; height: 36px; line-height: 36px;overflow: hidden; }
+.shop .product-list .spmmain .vhost_param .sp2 { float: left; width: 300px; height: 36px; line-height: 36px }
+.shop .product-list .spmmain .vhost_param span { color: #666 }
+.shop .product-list .spmmain .server_param { float: left; width: 100%;margin-left: 70px; overflow: hidden; font-size: 13px; }
+.shop .product-list .spmmain .server_param .sp1 { float: left; width: 320px; height: 36px; line-height: 36px }
+.shop .product-list .spmmain .server_param .sp2 { float: left; width: 450px; height: 36px; line-height: 36px }
+.shop .product-list .spmmain .server_param span { color: #666 }
+.shop .product-list .spmmain .spmprice {font-size: 22px;float: left;width: 200px;text-align: center;}
+.shop .product-list .spmmain .spmprice font{color: #ff6700;}
+.shop .product-list .spmmain .spmprice b{font-size: 40px;}
+.shop .product-list .spmmain .spmprice span{font-family: "\5FAE\8F6F\96C5\9ED1","Microsoft Yahei","Hiragino Sans GB",tahoma,arial,"\5B8B\4F53";font-size: 26px;}
+
+.shop .product-list .spmfoot { width: 100%; height: 60px; border-top: 1px solid #e5e5e5; background: #f8f8f8;}
+
+.shop .product-list .spmfoot .priceList { float: left;  height: 30px; margin-left: 25px;font-size: 16px; }
+.shop .product-list .spmfoot .priceList dt{float: left;margin-right: 20px;line-height: 60px;}
+.shop .product-list .spmfoot .priceList dd{float: left;margin-right: 20px;line-height: 60px;}
+.shop .product-list .spmfoot .priceList span{font-family: "\5FAE\8F6F\96C5\9ED1","Microsoft Yahei","Hiragino Sans GB",tahoma,arial,"\5B8B\4F53";}
+.shop .product-list .spmfoot .priceList font{color: #ff6700}
+
+.shop .product-list .spmfoot .chanquan { float: left;  height: 30px; margin-top: 15px; margin-left: 25px }
+.shop .product-list .spmfoot .chanquan .qs {float: left;width: 95px;height: 30px;position: relative;line-height: 30px;color: #989898;font-size: 14px;position: relative;}
+.shop .product-list .spmfoot .chanquan .qs img { cursor: pointer }
+.shop .product-list .spmfoot .chanquan .qs .tips {display:none;position:absolute;width:470px;height:30px;line-height:30px;padding:0px 10px;color:#fff;font-size:13px;left:20px;top:0px;z-index:9;background:url(../Images/server_tipsbj.png)no-repeat left center #ff964f}
+.shop .product-list .spmfoot .chanquan .radi { float: left; height: 30px; }
+.shop .product-list .spmfoot .chanquan input[type=button] {float:left;width:100px;height:30px;text-align:center;line-height:30px;background:#e0e0e0;color:#8c8c8c;border:0}
+.shop .product-list .spmfoot .chanquan .radi .on { color: #fff; background: #ff964f }
+
+.shop .product-list .spmfoot .nianxian { float: left; width: 100px; height: 30px; margin-top: 15px; margin-left: 30px }
+.shop .product-list .spmfoot .price { float: left; width: 200px; height: 60px; line-height: 60px; color: #8c8c8c; font-size: 24px; margin-left: 80px }
+.shop .product-list .spmfoot .price font{color: #ff6700;}
+.shop .product-list .spmfoot .price b{font-size: 40px;}
+.shop .product-list .spmfoot .price span{font-family: "\5FAE\8F6F\96C5\9ED1","Microsoft Yahei","Hiragino Sans GB",tahoma,arial,"\5B8B\4F53";font-size: 26px;}
+.shop .product-list .spmfoot .cart { float: right; width: 155px; height: 60px;line-height: 50px; text-align: center; background: #ff6700; border: 0; color: #fff; border-bottom-right-radius: 4px; font-size: 18px; -webkit-transition: all 0.3s linear; -moz-transition: all 0.3s linear; -ms-transition: all 0.3s linear; -o-transition: all 0.3s linear; transition: all 0.3s linear }
+.shop .product-list .spmfoot .cart:hover { background: #ff511b }
+.shop .sub-content .product-title { overflow: hidden; margin-top: 0px; border-bottom: 2px solid #00addc;margin-bottom: 20px; }
+.shop .sub-content .product-title-name { display: inline-block; font-size: 16px; line-height: 23px; color: #fff; background: #00addc; padding: 10px 34px }
+
+@-webkit-keyframes fadeInDown {
+	0% {
+	opacity: 0;
+	-webkit-transform: translate3d(0, -5%, 0);
+			transform: translate3d(0, -5%, 0);
+	}
+
+	50% {
+	opacity: 1;
+	-webkit-transform: none;
+			transform: none;
+	}
+}
+
+@keyframes fadeInDown {
+	0% {
+	opacity: 0;
+	-webkit-transform: translate3d(0, -5%, 0);
+			transform: translate3d(0, -5%, 0);
+	}
+
+	50% {
+	opacity: 1;
+	-webkit-transform: none;
+			transform: none;
+	}
+}
+
+@-webkit-keyframes fadeInUp {
+	0% {
+	opacity: 0;
+	-webkit-transform: translate3d(0, 100%, 0);
+			transform: translate3d(0, 100%, 0);
+	}
+
+	50% {
+	opacity: 1;
+	-webkit-transform: none;
+			transform: none;
+	}
+}
+
+@keyframes fadeInUp {
+	0% {
+	opacity: 0;
+	-webkit-transform: translate3d(0, 100%, 0);
+			transform: translate3d(0, 100%, 0);
+	}
+
+	50% {
+	opacity: 1;
+	-webkit-transform: none;
+			transform: none;
+	}
+}
+
+.server-info{
+	-webkit-animation: fadeInUp 1s;
+			animation: fadeInUp 1s;
+}
+
+.container-left-wrapper {
+	-webkit-animation: fadeInDown 1s;
+			animation: fadeInDown 1s;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: 30px;
+    padding: 0px 12px;
+    font-size: 14px;
+    line-height: 30px;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.btn-cloud {
+  color: #31b0d5;
+  background-color: #d7f3fb;
+  border-color: #0BACDA;
+  width: 100px;
+}
+.btn-cloud:focus,
+.btn-cloud.focus {
+  color: #31b0d5;
+  background-color: #baeffc;
+  border-color: #0BACDA;
+}
+.btn-cloud:hover {
+  color: #31b0d5;
+  background-color: #baeffc;
+  border-color: #0BACDA;
+}
+.btn-cloud.active,
+.open > .dropdown-toggle.btn-cloud {
+  color: #fff;
+  background-color: #0BACDA;
+  border-color: #0BACDA;
+}
+
+.btn-cloud.disabled,
+.btn-cloud[disabled],
+fieldset[disabled] .btn-cloud,
+.btn-cloud.disabled:hover,
+.btn-cloud[disabled]:hover,
+fieldset[disabled] .btn-cloud:hover,
+.btn-cloud.disabled:focus,
+.btn-cloud[disabled]:focus,
+fieldset[disabled] .btn-cloud:focus,
+.btn-cloud.disabled.focus,
+.btn-cloud[disabled].focus,
+fieldset[disabled] .btn-cloud.focus,
+.btn-cloud.disabled:active,
+.btn-cloud[disabled]:active,
+fieldset[disabled] .btn-cloud:active,
+.btn-cloud.disabled.active,
+.btn-cloud[disabled].active,
+fieldset[disabled] .btn-cloud.active {
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+.btn-cloud .badge {
+  color: #5bc0de;
+  background-color: #fff;
+}

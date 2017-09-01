@@ -1,0 +1,727 @@
+@import url('mynavigation.css');
+
+/*#region 数据库/VPS/服务器管理图标 */
+
+.sql-icon {
+    background: url(http://7u2fsf.com1.z0.glb.clouddn.com/manage-icons.png) no-repeat;
+    width: 75px;
+    height: 75px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    .sql-icon.password {
+        background-position: -0px -750px;
+    }
+
+    .sql-icon.backup {
+        background-position: -75px -750px;
+    }
+
+    .sql-icon.restore {
+        background-position: -150px -750px;
+    }
+
+    .sql-icon.advanced {
+        background-position: -225px -750px;
+    }
+
+.vps-icon {
+    background: url(http://7u2fsf.com1.z0.glb.clouddn.com/manage-icons.png) no-repeat;
+    width: 75px;
+    height: 75px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    .vps-icon.password {
+        background-position: -0px -900px;
+    }
+
+    .vps-icon.reboot {
+        background-position: -75px -900px;
+    }
+
+    .vps-icon.shutdown {
+        background-position: -150px -900px;
+    }
+
+    .vps-icon.graphic {
+        background-position: -225px -900px;
+    }
+
+    .vps-icon.note {
+        background-position: -0px -975px;
+    }
+
+    .vps-icon.renew {
+        background-position: -75px -975px;
+    }
+
+    .vps-icon.addip {
+        background-position: -150px -975px;
+    }
+
+    .vps-icon.rebuild {
+        background-position: -225px -975px;
+    }
+
+/*#endregion */
+
+/*#region 空间管理图标 */
+
+.hosting-icon {
+    background: url(http://7u2fsf.com1.z0.glb.clouddn.com/manage-icons.png) no-repeat;
+    width: 75px;
+    height: 75px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    .hosting-icon.bind {
+        background-position: -0px -375px;
+    }
+
+    .hosting-icon.ftpuser {
+        background-position: -75px -375px;
+    }
+
+    .hosting-icon.quota {
+        background-position: -150px -375px;
+    }
+
+    .hosting-icon.renew {
+        background-position: -225px -375px;
+    }
+
+    .hosting-icon.site {
+        background-position: -0px -450px;
+    }
+
+    .hosting-icon.ftp {
+        background-position: -75px -450px;
+    }
+
+    .hosting-icon.default {
+        background-position: -150px -450px;
+    }
+
+    .hosting-icon.switch {
+        background-position: -225px -450px;
+    }
+
+    .hosting-icon.write {
+        background-position: -0px -525px;
+    }
+
+    .hosting-icon.rar {
+        background-position: -75px -525px;
+    }
+
+    .hosting-icon.unrar {
+        background-position: -150px -525px;
+    }
+
+    .hosting-icon.sql {
+        background-position: -225px -525px;
+    }
+
+    .hosting-icon.error {
+        background-position: -0px -600px;
+    }
+
+    .hosting-icon.upgrade {
+        background-position: -75px -600px;
+    }
+/*#endregion */
+
+/*#region 域名/邮局管理图标 */
+
+.domain-icon {
+    background: url(/Images/manage-icons.png) no-repeat;
+    width: 75px;
+    height: 75px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    .domain-icon.jiexi {
+        background-position: -0px -0px;
+    }
+
+    .domain-icon.info {
+        background-position: -75px -0px;
+    }
+
+    .domain-icon.cert {
+        background-position: -150px -0px;
+    }
+
+    .domain-icon.renew {
+        background-position: -225px -0px;
+    }
+
+    .domain-icon.password {
+        background-position: -0px -75px;
+    }
+
+    .domain-icon.dns {
+        background-position: -75px -75px;
+    }
+
+    .domain-icon.move {
+        background-position: -150px -75px;
+    }
+
+    .domain-icon.change {
+        background-position: -225px -75px;
+    }
+
+    .domain-icon.out {
+        background-position: -0px -150px;
+    }
+
+    .domain-icon.whois {
+        background-position: -75px -150px;
+    }
+
+    .domain-icon.delete {
+        background-position: -150px -150px;
+    }
+
+    .domain-icon.users {
+        background-position: -225px -150px;
+    }
+
+    .domain-icon.upgrade {
+        background-position: -0px -225px;
+    }
+
+    .domain-icon.preinfo {
+        background-position: -75px -225px;
+    }
+    .domain-icon.in {
+        background-position: -150px -225px;
+    }
+
+/*#endregion */
+
+/*#region 自定义样式 */
+
+.panel {
+    background-color: #fff;
+}
+
+.panel-default {
+    border: none;
+    box-shadow: none;
+}
+
+    .panel-default > .panel-heading {
+        background-color: #fff;
+        padding: 7px 15px;
+        border-bottom: solid 3px #f7f7f7;
+    }
+
+.table {
+    margin-bottom: 10px;
+}
+
+.pagination-container {
+    text-align: center;
+}
+
+.tab-content {
+    background-color: #fff;
+    padding: 20px;
+}
+
+.nav-tabs {
+    border-bottom: solid 2px #2680b4;
+}
+
+    .nav-tabs > li > a {
+        margin-right: 0;
+        padding: 8px 80px;
+        border: none;
+        color: #333;
+    }
+
+    .nav-tabs > li.active > a,
+    .nav-tabs > li.active > a:hover {
+        border: none;
+        background-color: #2680b4;
+        color: #fff;
+    }
+
+    .nav-tabs > li > a:hover {
+        background-color: #2680b4;
+        color: #fff;
+    }
+
+.form-horizontal .control-label {
+    text-align: left;
+}
+
+.form-horizontal .form-group-lg .control-label {
+    font-size: 16px;
+    font-weight: 500;
+    padding-top: 15px;
+}
+
+input[type=file] {
+    margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+    .modal-dialog {
+        margin-top: 20%;
+    }
+}
+
+.word-break {
+    -ms-word-break: break-all;
+    word-break: break-all;
+}
+
+/*#endregion */
+
+/*#region 头尾部分 */
+
+#header {
+    padding-top: 8px;
+}
+
+.navbar {
+    border-bottom: 2px solid #eee;
+    margin-bottom: 15px;
+}
+
+#switch {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#copyright {
+    font-size: 12px;
+    color: #fff;
+    background-color: #2680b4;
+    margin-top: 30px;
+    padding: 15px 0;
+    text-align: center;
+}
+
+/*#endregion */
+
+/*#region 左侧菜单 */
+
+.arrow {
+    float: right;
+}
+
+.glyphicon.arrow:before {
+    content: "\e079";
+}
+
+.active > a > .glyphicon.arrow:before {
+    content: "\e114";
+}
+
+#left {
+    padding-left: 0;
+}
+
+#face {
+    background: url(../Images/manage-userface.jpg) no-repeat;
+    width: 180px;
+    height: 190px;
+    display: block;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+    #face:hover, #face:focus {
+        background-position: 0 -190px;
+    }
+
+    #face span {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        padding: 2px 5px;
+        background-color: #5cb85c;
+        color: #fff;
+    }
+
+#leftMenu a {
+    padding: 8px 10px;
+    color: #333;
+}
+
+#leftMenu .sub > li > a:hover {
+    background-color: inherit;
+    color: #195375;
+}
+
+#leftMenu .sub > li {
+    border: 1px solid #ddd;
+    border-top: none;
+}
+
+    #leftMenu .sub > li > a {
+        padding-left: 30px;
+    }
+
+#leftMenu.nav > li > a {
+    background-color: #195375;
+    color: #fff;
+}
+/*#endregion */
+
+/*#region 管理首页 */
+
+.home-block {
+    color: #fff;
+    padding: 20px;
+}
+
+.home-block-1 {
+    background-color: #5cb85c;
+}
+
+.home-block-2 {
+    background-color: #2680b4;
+}
+
+.home-block .fa {
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+
+.home-block small {
+    opacity: 0.8;
+    font-size: 14px;
+}
+
+.home-block h4 {
+    font-size: 30px;
+    margin: 0;
+}
+
+.home-block h5 {
+    font-size: 16px;
+    margin: 0;
+    margin-top: 5px;
+}
+
+.home-statistic {
+    border-left: 2px solid #5cb85c;
+    padding: 7px 0 0 7px;
+    border-bottom: solid 3px #f7f7f7;
+}
+
+    .home-statistic .order {
+        font-size: 20px;
+        color: #999;
+    }
+
+    .home-statistic:hover .order {
+        color: #5cb85c;
+    }
+
+    .home-statistic .number {
+        color: #999;
+        margin: 5px 0;
+    }
+
+.home-ticket {
+    border-bottom: solid 2px #f7f7f7;
+    padding: 4px 10px;
+}
+
+    .home-ticket .dateformat {
+        background-color: #2680b4;
+        color: #fff;
+        padding: 5px;
+        width: 80%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+        .home-ticket .dateformat p {
+            font-size: 19px;
+            margin-bottom: 5px;
+        }
+
+    .home-ticket .brief {
+        color: #999;
+        margin: 5px 0;
+    }
+
+/*#endregion */
+
+/*#region 在线充值 */
+
+#refill label {
+    width: 30%;
+    padding-left: 0;
+}
+
+    #refill label input[type="radio"] {
+        margin-top: 15px;
+        display: none;
+    }
+
+#refill span {
+    border: 1px solid #ccc;
+    display: block;
+    padding: 5px 0 5px 8px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+    #refill span .fa {
+        display: none;
+    }
+
+    #refill span.active {
+        border: 2px solid #2680b4;
+    }
+
+        #refill span.active .fa {
+            display: block;
+            position: absolute;
+            right: 2px;
+            bottom: 2px;
+            color: #2680b4;
+        }
+
+.bank-icon {
+    background: url(/img/payment-icons.png) scroll no-repeat;
+    height: 30px;
+    display: block;
+}
+
+    .bank-icon.alipay {
+        background-position: -0px -0px;
+        width: 88px;
+    }
+
+    .bank-icon.icbc {
+        background-position: -0px -150px;
+        width: 150px;
+    }
+
+    .bank-icon.cmb {
+        background-position: -0px -180px;
+        width: 113px;
+    }
+
+    .bank-icon.ccb {
+        background-position: -0px -210px;
+        width: 160px;
+    }
+
+    .bank-icon.abc {
+        background-position: -0px -240px;
+        width: 145px;
+    }
+
+    .bank-icon.boc {
+        background-position: -0px -270px;
+        width: 105px;
+    }
+
+    .bank-icon.comm {
+        background-position: -0px -300px;
+        width: 130px;
+    }
+
+    .bank-icon.tenpay {
+        background-position: -88px -0px;
+        width: 88px;
+    }
+
+/*#endregion */
+
+/*#region 订购页面 */
+
+.product-order label {
+    font-size: 18px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+    .product-order div.radio > label,
+    .product-order label.radio-inline {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+.product-order .form-group {
+    margin-bottom: 20px;
+}
+
+    .product-order .form-group div.radio {
+        height: 30px;
+    }
+
+#domain-info {
+    border: 1px solid #ccc;
+    padding: 0 10px;
+}
+
+    #domain-info p {
+        font-size: 15px;
+        font-weight: bold;
+        margin: 20px 0;
+    }
+
+    #domain-info label {
+        font-weight: normal;
+    }
+
+/*服务器订购*/
+.product-order fieldset legend {
+    border-bottom: none;
+    color: #2680b4;
+}
+
+.product-order fieldset > div {
+    border: 1px solid #ccc;
+    padding: 20px 10px 5px 10px;
+    margin-bottom: 10px;
+}
+
+.product-order fieldset .form-group {
+    margin-bottom: 10px;
+}
+
+.product-order fieldset .form-control-static {
+    margin-bottom: 15px;
+}
+
+#server-info {
+    padding: 15px;
+    background-color: #f7f7f7;
+}
+
+    #server-info h3 {
+        font-size: 21px;
+        margin: 0 0 20px 0;
+        color: #2680b4;
+    }
+
+    #server-info.affix {
+        top: 20px;
+        z-index: 10;
+        width: 360px;
+    }
+
+.order-icon {
+    background: url(http://7u2fsf.com1.z0.glb.clouddn.com/vps-icons.png) scroll no-repeat;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35px;
+    height: 35px;
+}
+
+    .order-icon.cpu {
+        background-position: -0px -560px;
+    }
+
+    .order-icon.ram {
+        background-position: -35px -560px;
+    }
+
+    .order-icon.hdd {
+        background-position: -70px -560px;
+    }
+
+    .order-icon.bw {
+        background-position: -105px -560px;
+    }
+
+    .order-icon.port {
+        background-position: -140px -560px;
+    }
+
+    .order-icon.ip {
+        background-position: -0px -595px;
+    }
+
+    .order-icon.os {
+        background-position: -35px -595px;
+    }
+
+    .order-icon.cp {
+        background-position: -70px -595px;
+    }
+
+    .order-icon.partition {
+        background-position: -105px -595px;
+    }
+
+/*#endregion */
+
+/*右侧主体*/
+#right {
+    background-color: #f7f7f7;
+    padding: 20px;
+}
+
+/*图标列表*/
+.manage-list a {
+    text-align: center;
+    display: block;
+    color: #195375;
+}
+
+    .manage-list a:hover {
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+/*有问必答 */
+.ticket-body {
+    position: relative;
+}
+
+    .ticket-body small {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .ticket-body p {
+        margin-top: 10px;
+    }
+
+/*购物车*/
+#shopcart {
+    padding: 10px 20px;
+    background-color: #eee;
+}
+
+/*404页面*/
+#error {
+    text-align: center;
+    padding-bottom:50px;
+}
+
+    #error h1 {
+        color: #777;
+        font-size: 180px;
+        padding-bottom: 20px;
+    }
+
+    #error p{
+        margin-bottom:40px;
+    }

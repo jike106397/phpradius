@@ -17,7 +17,7 @@ $('#menu').accordion({
                 });
                 
                 break;
-/*
+
             case 2:
                 $('#datagrid').load('area.html',function(){
                 init_table('area');    
@@ -36,14 +36,14 @@ $('#menu').accordion({
                 });
                 
                 break;
-*/
-            case 2:
+
+            case 5:
                 $('#datagrid').load('ip.html',function(){
                     init_table('ip');    
                 });
                 
                 break;
-/*
+
             case 6:
                 $('#datagrid').load('analyze.html',function(){
                     init_table('analyze');    
@@ -56,7 +56,7 @@ $('#menu').accordion({
                     init_table('log');    
                 });                
                 break;
-*/
+
             default:
                 break;
         }
@@ -101,6 +101,7 @@ $('#menu').accordion({
                                 columns:[[
                                         {title:'帐号名',field:'username',width:100},
                                         {title:'密码',field:'Cleartext_Password',width:100},
+                                        {title:'共享数',field:'Simultaneous_Use',width:50},
                                         {title:'地区',field:'Pool_Name',width:30},
                                         {title:'到期时间',field:'Expiration',width:150},
                                         {title:'帐号类型',field:'Nas_Port_Type',width:50},
