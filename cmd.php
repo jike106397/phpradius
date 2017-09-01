@@ -161,15 +161,17 @@ function edituser(){
             $res3=mysqli_query($conn,$sql);
             $sql="update {$tb_check} set value='$exp' where username='$username' and attribute='Expiration'";
             $res4=mysqli_query($conn,$sql);
-            //$sql="insert into {$tb_user} (`username`,`Cleartext_Password`,`Pool_Name`,`Nas_Port_Type`,`Expiration`) values ('$username','$password','$pool','$type','$expiration')";
-            $sql="update {$tb_user} set comment='$comment',Cleartext_Password='$password',Pool_Name='$pool',Expiration='$expiration',Nas_Port_Type='$type'  where username='$username'";
+            $sql="update {$tb_check} set value='$sim' where username='$username' and attribute='Simultaneous-Use'";
             $res5=mysqli_query($conn,$sql);
-            if ($res1 && $res2 && $res3 && $res4 && $res5) {
+            //$sql="insert into {$tb_user} (`username`,`Cleartext_Password`,`Pool_Name`,`Nas_Port_Type`,`Expiration`) values ('$username','$password','$pool','$type','$expiration')";
+            $sql="update {$tb_user} set comment='$comment',Cleartext_Password='$password',Pool_Name='$pool',Expiration='$expiration',Nas_Port_Type='$type',Simultaneous_Use='$sim' where username='$username'";
+            $res6=mysqli_query($conn,$sql);
+            if ($res1 && $res2 && $res3 && $res4 && $res5 && $res6) {
                 mysqli_commit($conn);
                     echo json_encode($arr);
              } else {
                  mysqli_rollback($conn);
-                    $arr['errorMsg']="保存用户失败！！ res1={$res1}  res2={$res2} res3={$res3} res4={$res4} res5={$res5}" . mysqli_error($conn);
+                    $arr['errorMsg']="保存用户失败！！ res1={$res1}  res2={$res2} res3={$res3} res4={$res4} res5={$res5},res6={$res6}" . mysqli_error($conn);
                     echo json_encode($arr);
             }
             mysqli_close($conn);
@@ -341,6 +343,7 @@ function adduser(){
     $pool=filter_input(INPUT_POST,'Pool_Name');
     $type=filter_input(INPUT_POST,'Nas_Port_Type');
     $expiration=filter_input(INPUT_POST,'Expiration');
+    $sim=filter_input(INPUT_POST,'Simultaneous_Use');
     $comment=filter_input(INPUT_POST,'comment');
     $arr=array(
         "errorMsg"=>"提交数据错误！！",
@@ -351,9 +354,9 @@ function adduser(){
             mysqli_begin_transaction($conn);
             $timstramp= strtotime($expiration);
             $exp=date("d M Y H:i:s",$timstramp);
-            $sql="insert into {$tb_check} values ('','$username','Cleartext-Password',':=','$password'),('','$username','Pool-Name',':=','$pool'),('','$username','Expiration',':=','$exp'),('','$username','Simultaneous-Use',':=',1),('','$username','Nas-Port-Type','==','$type')";
+            $sql="insert into {$tb_check} values ('','$username','Cleartext-Password',':=','$password'),('','$username','Pool-Name',':=','$pool'),('','$username','Expiration',':=','$exp'),('','$username','Simultaneous-Use',':=',$sim),('','$username','Nas-Port-Type','==','$type')";
             $res1=mysqli_query($conn,$sql);
-            $sql="insert into {$tb_user} (`username`,`Cleartext_Password`,`Pool_Name`,`Nas_Port_Type`,`Expiration`,`sessionusername`,`starttime`,`comment`) values ('$username','$password','$pool','$type','$expiration','$sessionusername',now(),'$comment')";
+            $sql="insert into {$tb_user} (`Simultaneous_Use`,`username`,`Cleartext_Password`,`Pool_Name`,`Nas_Port_Type`,`Expiration`,`sessionusername`,`starttime`,`comment`) values ('$sim',$username','$password','$pool','$type','$expiration','$sessionusername',now(),'$comment')";
             $res3=mysqli_query($conn,$sql);
             if (1==$res1 &&1==$res3) {
                     mysqli_commit($conn);

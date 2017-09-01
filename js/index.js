@@ -301,7 +301,7 @@ $('#menu').accordion({
                                 rownumbers:true,
                                 fitcolumns:true,
                                 toolbar:'#tb-search-ip',
-/*
+
                                 columns:[[
                                         {title:'IP状态',field:'used',width:50},
                                         {title:'IP',field:'framedipaddress',width:80},
@@ -313,12 +313,13 @@ $('#menu').accordion({
                                         {title:'公网密码',field:'pppoepass',width:100},
                                         {title:'公网接口状态',field:'pppoestate',width:100}
                                 ]]               
-*/
+/*
 				columns:[[
                                         {title:'IP状态',field:'used',width:50},
                                         {title:'IP',field:'framedipaddress',width:80},
                                         {title:'最后使用时间',field:'lastuse',width:150}
 				]]
+*/
                                 
                             });
                            $('#ss-ip').searchbox({
@@ -434,7 +435,7 @@ $('#menu').accordion({
  
 
             function dosearch(module,name,value){        
-                    $('#tt-'+module).datagrid('load',{
+                    $('#tt-main').datagrid('load',{
                         searchname:name,
                         searchvalue:value
                     });   
