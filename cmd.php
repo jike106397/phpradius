@@ -143,6 +143,7 @@ function edituser(){
     $pool=filter_input(INPUT_POST,'Pool_Name');
     $type=filter_input(INPUT_POST,'Nas_Port_Type');
     $expiration=filter_input(INPUT_POST,'Expiration');
+    $sim=filter_input(INPUT_POST,'Simultaneous_Use');
     $comment=filter_input(INPUT_POST,'comment');
     $arr=array(
         "successMsg"=>"保存用户 {$username}  {$pool} 成功！！" 
