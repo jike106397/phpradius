@@ -357,7 +357,7 @@ function adduser(){
             $exp=date("d M Y H:i:s",$timstramp);
             $sql="insert into {$tb_check} values ('','$username','Cleartext-Password',':=','$password'),('','$username','Pool-Name',':=','$pool'),('','$username','Expiration',':=','$exp'),('','$username','Simultaneous-Use',':=',$sim),('','$username','Nas-Port-Type','==','$type')";
             $res1=mysqli_query($conn,$sql);
-            $sql="insert into {$tb_user} (`Simultaneous_Use`,`username`,`Cleartext_Password`,`Pool_Name`,`Nas_Port_Type`,`Expiration`,`sessionusername`,`starttime`,`comment`) values ('$sim',$username','$password','$pool','$type','$expiration','$sessionusername',now(),'$comment')";
+            $sql="insert into {$tb_user} (`Simultaneous_Use`,`username`,`Cleartext_Password`,`Pool_Name`,`Nas_Port_Type`,`Expiration`,`sessionusername`,`starttime`,`comment`) values ($sim,'$username','$password','$pool','$type','$expiration','$sessionusername',now(),'$comment')";
             $res3=mysqli_query($conn,$sql);
             if (1==$res1 &&1==$res3) {
                     mysqli_commit($conn);
