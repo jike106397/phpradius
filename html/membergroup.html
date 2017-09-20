@@ -1,0 +1,38 @@
+<table id="tt-main"></table>  
+        
+                    <div id="tb-membergroup">                            
+                        <a class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="add('membergroup');">添加</a>
+                        <a class="easyui-linkbutton" data-options="iconCls:'icon-edit'" onclick="edit('membergroup');">编辑</a>
+                        <a class="easyui-linkbutton" data-options="iconCls:'icon-cut'" onclick="rem('membergroup');">删除</a>                                                 
+                    </div>        
+
+
+
+
+
+        <div id="dlg-membergroup" class="easyui-dialog" style="width:400px;height:400px;padding:10px 20px"
+    		closed="true" buttons="#dlg-buttons-membergroup">
+        	   <div class="ftitle">组管理</div>
+               <form method="post" id="fm-membergroup">
+                        <div class="fitem">
+                            <label>组名称：</label>
+                            <input  name="groupname" class="easyui-validatebox idstr" required="true">
+                        </div>
+                        <div class="fitem">
+                            <label>组描述：</label>
+                            <input name="groupdes" class="easyui-validatebox" required="true">
+                        </div>
+                        <ul id="tmenu"></ul>
+                        <button onclick="menujson($('#tmenu').tree('getRoots'));">获取现在 </button>
+                       
+                </form>
+        </div>
+            <div id="dlg-buttons-membergroup">
+            	<a href="#" id="ok-membergroup" class="easyui-linkbutton" iconCls="icon-ok" >保存</a>
+            	<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg-membergroup').dialog('close')">取消</a>
+            </div> 
+
+ 
+
+        
+

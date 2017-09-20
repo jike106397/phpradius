@@ -1,14 +1,25 @@
 <?php
 
-$host='www.b.com';
-$user='jack';
-$pass='jike1988';
+$cmdname=array('NAS管理'=>'nas',
+						'地区管理'=>'area',
+						"IP管理"=>'ip',
+						"用户管理"=>'user',
+						"在线用户"=>'onlineuser',
+						"会员管理"=>'member',
+						"组管理"=>'membergroup',
+						"线路统计"=>'analyze',
+						"上网日志"=>'log');
 
-$tb_member='dbmembers';
-$tb_user='dbusers';
-$tb_user='webuser';
-$tb_area='dbareas';
-$tb_area='webarea';
+$host='radius.dshoub.cn';
+$user='root';
+$pass='jike@1988';
+
+$tb_member='hsmembers';
+$tb_membergroup='hsmembergroup';
+$tb_user='hsusers';
+//$tb_user='webuser';
+$tb_area='hsareas';
+//$tb_area='webarea';
 $tb_check='radcheck';
 $tb_ippool='radippool';
 $tb_acct='radacct';

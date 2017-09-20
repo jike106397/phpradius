@@ -1,6 +1,7 @@
-<div region="west" style="width:150px;height:50px;" title="红隼动态拨号系统" split="true">
+<div region="west" style="width:150px;height:50px;" title="动态拨号管理" split="true">
              
-            <div id="menu" class="easyui-accordion" style="width:150px;">    
+            <div id="menu" class="easyui-accordion" style="width:150px;">  
+                <div title="资源管理">  
                     <div title="账号管理"  style="overflow:auto;padding:10px;">    
                         <h3 style="color:#0099FF;"></h3>    
                         <p></p>    
@@ -32,7 +33,7 @@
                     <div title="系统概览"  style="padding:10px;">    
                         <p></p>            
                     </div> 
-	
+	           </div>
             </div>  
          </div>
 

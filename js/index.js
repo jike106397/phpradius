@@ -63,7 +63,14 @@ $('#menu').accordion({
 
          
     }
-});           
+});     
+
+    function changemenu(title)
+    {
+         $('#hsmain').load('./html/'+title + '.html',function(){
+            init_table(title);
+          });          
+    }      
 
 
  
@@ -77,7 +84,7 @@ $('#menu').accordion({
           
             
             function init_table(type) {
-                $.parser.parse(('#datagrid')); 
+                $.parser.parse(('#hsmain')); 
                 //alert(type);
                 switch(type) {
                     case 'user':
@@ -154,7 +161,7 @@ $('#menu').accordion({
                                 toolbar:'#tb-area',
                                 columns:[[
                                         {title:'ID',field:'areaid',width:30,sortable:'true'},
-                                        {title:'地区名',field:'areaname',width:80,sortable:'true'},
+                                        {title:'地区名',field:'areaname',width:120,sortable:'true'},
                                         {title:'qq号',field:'qq',width:80,sortable:'true'},
                                         {title:'电话',field:'tel',width:100,sortable:'true'},
                                         {title:'单价',field:'permoney',width:30},
@@ -307,7 +314,7 @@ $('#menu').accordion({
                                         {title:'IP',field:'framedipaddress',width:80},
                                         {title:'地区',field:'pool_name',width:40},
                                         {title:'公网IP',field:'publicipaddress',width:120},
-                                        {title:'最后使用时间',field:'lastuse',width:150},
+                                        {title:'最后使用时间',field:'lastuse',width:150,sortable:'true'},
                                         {title:'最后更新',field:'lastupdate',width:150,sortable:'true'},
                                         {title:'公网帐号',field:'pppoeuser',width:100},
                                         {title:'公网密码',field:'pppoepass',width:100},
@@ -382,7 +389,8 @@ $('#menu').accordion({
                                             {title:'在线',field:'using_count',width:50,sortable:'true'},
                                             {title:'可用',field:'unused_count',width:50,sortable:'true'},
                                             {title:'已用',field:'used_count',width:50,sortable:'true'},
-                                            {title:'保留线路',field:'reserved_count',width:50,sortable:'true'}                        
+                                            {title:'正在重拨',field:'redialing_count',width:100,sortable:'true'},
+                                            {title:'保留线路',field:'reserved_count',width:100,sortable:'true'}                        
                                     ]]               
                                     
                                 });
@@ -393,12 +401,44 @@ $('#menu').accordion({
                                            } 
                                        });
                              break;
+                    case 'membergroup':
+                    $('#tt-main').datagrid({
+                            striped:true,
+                            singleSelect:true,
+                            url:'./cmd.php?cmd=get&type=membergroup',
+                            pageSize:20,
+                            pagenumber:1,                
+                            pagination:true,
+                            pagePosition:'both',
+                            rownumbers:true,
+                            fitcolumns:true,
+                            toolbar:'#tb-membergroup',
+                            columns:[[
+                                    {title:'名字',field:'groupname',width:100},
+                                    {title:'描述',field:'groupdes',width:200},
+                                    {title:'权限值',field:'groupvalue',width:200},
+                                                                                             
+                            ]],
+                            onDblClickRow:function(rowIndex,rowData){
+                                    var menudata=JSON.parse(rowData.groupvalue)
+                                    $('#tmenu').tree({  
+                                        //method:'get',
+                                        data:menudata,                                      
+                                        checkbox:true
+                                    }); 
+                                    edit('membergroup');  
+
+                            }
+                        });  
+
+                        break;
+
                     default:
                             init_table('user');
                              break;
 
                 }
-                $.parser.parse(('#datagrid')); 
+                $.parser.parse(('#hsmain')); 
                             
 
 
@@ -456,6 +496,7 @@ $('#menu').accordion({
             function edit(p){
                 if(p) {
                     var row  = $('#tt-main').datagrid('getSelected');
+                    //alert(JSON.stringify(row));
                     if(row) {
                         $(".idstr").attr('readonly','true');
                         $('#dlg-' +p).dialog('open').dialog('setTitle','修改'); 
@@ -463,40 +504,52 @@ $('#menu').accordion({
                         $('#ok-' + p).click(function(){save('edit',p);});
                         $('#ok-' + p).text('保存');
                         $('#fm-' +p).form('load',row);  
+                        if(p=='membergroup') {
+                                    var menudata=JSON.parse(row.groupvalue);
+                                    
+                                    $('#tmenu').tree({  
+                                        //method:'get',
+                                        data:menudata,                                      
+                                        checkbox:true
+                                    });  
+                        }
                     }
                 }
             }
             function save(cmd,type) {  
                 var url='cmd.php?cmd=' + cmd + '&type=' + type;
+
                 $('#fm-'+type).form('submit',{
                     url:url,
                     onSubmit:function(p){
-                        p.Pool_Name=$('#cc1').combobox('getValues');
-                        //var ms=$('#cc1').combobox('getValues');
-                        //ms.join(',');
-                        //alert(ms);
-                        //$('#cc1').combobox('setValue','2');
-                        //alert(ms);
-                        //alert($('#cc1').combobox('getValue'));
+                        if (type=='user') {
+                            p.Pool_Name=$('#cc1').combobox('getValues');    
+                        }                        
+                        
+                        if (type=='membergroup') {
+                            p.groupvalue=menujson($('#tmenu').tree('getRoots'));    
+                        }                       
+                        
                         return $(this).form('validate');
                     },
                     success:function(result){                                       
                         var result = eval('('+result+')');
-			if (result.errorMsg){
-				$.messager.show({
-					title: '错误',
-					msg: result.errorMsg
-				});
-			} else {
-                            	$.messager.show({
-					title: '成功',
-					msg: result.successMsg
-				});
-				$('#dlg-'+type).dialog('close');		// close the dialog
-				$('#tt-main').datagrid('reload');	// reload the user data
-			}
+            			if (result.errorMsg){
+            				$.messager.show({
+            					title: '错误',
+            					msg: result.errorMsg
+            				});
+            			} else {
+                            $.messager.show({
+            					title: '成功',
+            					msg: result.successMsg
+            				});
+            				$('#dlg-'+type).dialog('close');		// close the dialog
+            				$('#tt-main').datagrid('reload');	// reload the user data
+            			}
                     }                    
-                });                
+                }); 
+                            
             }
             
             
@@ -524,6 +577,10 @@ $('#menu').accordion({
                     case 'member':
                         var cfm='您确定删除这个会员么？'+row.username;
                         var idstr=row.username;
+                        break;
+                    case 'membergroup':
+                        var cfm='您确定删除这个管理组么？'+row.groupname;
+                        var idstr=row.groupname;
                         break;
                     default:
                         break;
@@ -591,5 +648,44 @@ $('#menu').accordion({
         }
         
         
-  
+        function menujson(p) {
+            var q=null;
+            var r=null;
+            var s=null;
+            for(var key in p) {
+                q=p[key];
+                if (q.checkState=='checked') {                    
+                    q['checked']=true;
+                } else {
+                    q['checked']=false;
+                }
+                delete q.checkState;
+                delete q.domId;
+                delete q.target;
+                delete q._checked;
+                if (q.children) {
+                    r=q.children;
+                    for(var subkey in r) {
+                        s=r[subkey];
+                        if (s.checkState=='checked') {
+                            
+                            s['checked']=true;
+                        } else {
+                            s['checked']=false;
+                        }
+                        delete s.checkState;
+                        delete s.domId;
+                        delete s.target;
+                        delete s._checked;
+                        
+
+                    }
+
+                }
+                
+                
+            }
+            return(JSON.stringify(p));
+            
+        }
             

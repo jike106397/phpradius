@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="chrome=1;IE=11;IE=10;IIE=9;IE=8;IE=7">
+<meta name="viewport" content="width=1280px, initial-scale=0.8,maximum-scale=2.0, minimum-scale=0.25, user-scalable=yes">
+<title>红隼认证计费证管理后台</title>        
+    <link rel="stylesheet" type="text/css" href="./js/easyui/themes/bootstrap/easyui.css">
+    <link rel="stylesheet" type="text/css" href="./js/easyui/bootstrap/icon.css">
+    <link rel="stylesheet" type="text/css" href="./js/easyui/demo/demo.css">
+    <script type="text/javascript" src="./js/easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="./js/easyui/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="./js/easyui/datagrid-filter.js"></script>
+
+
+</head>
+
+<body class="easyui-layout">
+
+    <div class="panel" data-options="region:'north',split:true"  style="background-image: url(img/top.jpg);height: 80px;" href="./html/top.php">
+    </div>
+    <div class="panel" data-options="region:'west',split:true,title:'认证计费系统'" href="./html/left.php" style="width:156px;overflow:hidden;" >
+    </div>
+    <div id="hsmain" class="panel" data-options="region:'center'" >
+    <!--style="overflow:hidden;border:0;">    -->
+
+
+    </div>
+    <div class="panel" data-options="region:'south',split:true"></div>
+
+<input type="hidden" value="admin" name="__checkmanagername" id="__checkmanagername" />
+
+<script type="text/javascript" src="./js/index.js"></script>
+<script type="text/javascript">
+$(function(){
+    $('body').layout('panel','north').panel('panel').resizable('disable');
+    $('body').layout('panel','west').panel('panel').resizable('disable');
+    $('body').layout('panel','south').panel('panel').resizable('disable');  
+});
+
+</script>
+
+
+</body>
+</html>

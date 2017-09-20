@@ -26,17 +26,17 @@ mysqli_close($conn);
 <title>红隼管理登录</title>
 <meta name="keywords" content="phpradius">
 <meta name="description" content="Åµ±öVPSÓÃ»§¹ÜÀíÖÐÐÄ">
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/font-awesome.css" rel="stylesheet">
-<link href="css/mysite.css" rel="stylesheet">
-<script src="js/html5shiv.js"></script>
-<script src="js/respond.js"></script>
-<link rel="stylesheet" href="css/animate.css">
-<link rel="stylesheet" type="text/css" href="css/shop.css">
-<link rel="stylesheet" type="text/css" href="css/yun.css">
+<link href="./css/bootstrap.css" rel="stylesheet">
+<link href="./css/font-awesome.css" rel="stylesheet">
+<link href="./css/mysite.css" rel="stylesheet">
+<script src="./js/html5shiv.js"></script>
+<script src="./js/respond.js"></script>
+<link rel="stylesheet" href="./css/animate.css">
+<link rel="stylesheet" type="text/css" href="./css/shop.css">
+<link rel="stylesheet" type="text/css" href="./css/yun.css">
 </head>
 <body class="shop">
-<link href="css/mysite2.css" rel="stylesheet">  
+<link href="./css/mysite2.css" rel="stylesheet">  
 <div class="container" style="margin-top:20px;">
     <div class="row">
 <!--ÓÒ²à¿ªÊ¼²¿·Ö-->

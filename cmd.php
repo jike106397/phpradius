@@ -1,8 +1,13 @@
 <?php
-require_once 'db/session.php';
+require_once './db/session.php';
+
+    
 
 $cmd= isset($_GET['cmd'])?$_GET['cmd']:0;
 $type= isset($_GET['type'])?$_GET['type']:0;
+if (!aclfilter($type)) {
+    die('no privileges');
+}
 if('get'===$cmd){
     switch($type){
         case 'user'://帐号显示
@@ -35,6 +40,9 @@ if('get'===$cmd){
         case 'analyze':
             getanalyze();
             break;
+        case 'membergroup':
+            getmembergroup();
+            break;
         default:
             break;        
     }   
@@ -57,6 +65,9 @@ if('add'===$cmd){
         case 'member':
             addmember();
             break;
+        case 'membergroup':
+            addmembergroup();
+            break;
         default:
             break;        
     }   
@@ -77,6 +88,9 @@ if('edit'===$cmd){
         case 'member':
             editmember();
             break;
+        case 'membergroup':
+            editmembergroup();
+            break;
         default:
             break;        
     }   
@@ -94,6 +108,9 @@ if('remove'===$cmd) {
             break;
         case 'member':
             removemember();
+            break;
+        case 'membergroup':
+            removemembergroup();
             break;
         default:
             break; 
@@ -117,7 +134,7 @@ function editarea() {
     $tel=filter_input(INPUT_POST,'tel');
     $yuancheng=filter_input(INPUT_POST,'yuancheng');
     if($areaname && $qq && $tel && $yuancheng) {
-        require_once './db/db.php';
+        require './db/db.php';
         $sql="update {$tb_area} set areaname='$areaname',qq='$qq',tel='$tel',yuancheng='$yuancheng' where areaid='$areaid'";
         $res= mysqli_query($conn, $sql);
         if ($res) {
@@ -149,7 +166,7 @@ function edituser(){
         "successMsg"=>"保存用户 {$username}  {$pool} 成功！！" 
     );
     if ($username && $password && ($pool!==NULL and $pool!==false) && $type && $expiration) {
-            require_once './db/db.php';
+            require './db/db.php';
             mysqli_begin_transaction($conn);
             $timstramp= strtotime($expiration);
             $exp=date("d M Y H:i:s",$timstramp);
@@ -191,7 +208,7 @@ function editnas() {
     $shortname=filter_input(INPUT_POST,'shortname');
     
     if($nasname && $secret && $shortname) {
-        require_once './db/db.php';
+        require './db/db.php';
         $sql="update nas set shortname='$shortname',secret='$secret' where nasname='$nasname'";
         $res=mysqli_query($conn,$sql);
         if ($res) {
@@ -213,7 +230,7 @@ function editmember() {
     $username=filter_input(INPUT_POST,'username');
     $password=filter_input(INPUT_POST,'password');   
     if($username && $password) {
-        require_once './db/db.php';
+        require './db/db.php';
         $sql="update {$tb_member} set password='$password' where username='$username'";
         $res=mysqli_query($conn,$sql);
         if ($res) {
@@ -221,6 +238,31 @@ function editmember() {
             echo json_encode($arr);
         } else {
            $arr['errorMsg']='修改会员失败！！' . mysqli_error($conn);
+           echo json_encode($arr);
+        }
+        mysqli_close($conn);
+    }   else {
+        echo json_encode($arr);
+    } 
+}
+
+function editmembergroup() {
+    $arr=array(
+        "errorMsg"=>"提交数据错误！！",
+        "successMsg"=>"修改组成功！！"
+        );
+    $groupname=filter_input(INPUT_POST,'groupname');
+    $groupdes=filter_input(INPUT_POST,'groupdes'); 
+    $groupvalue=filter_input(INPUT_POST,'groupvalue'); 
+    if($groupname) {
+        require './db/db.php';
+        $sql="update {$tb_membergroup} set groupdes='$groupdes',groupvalue='$groupvalue' where groupname='$groupname'";
+        $res=mysqli_query($conn,$sql);
+        if ($res) {
+            unset($arr['errorMsg']);
+            echo json_encode($arr);
+        } else {
+           $arr['errorMsg']='修改组失败！！' . mysqli_error($conn);
            echo json_encode($arr);
         }
         mysqli_close($conn);
@@ -240,7 +282,7 @@ function addnas() {
     $shortname=filter_input(INPUT_POST,'shortname');
     
     if($nasname && $secret && $shortname) {
-        require_once './db/db.php';
+        require './db/db.php';
         $sql="insert into nas(nasname,shortname,secret) values('$nasname','$shortname','$secret')";
         $res=mysqli_query($conn,$sql);
         if ($res) {
@@ -264,7 +306,7 @@ function addmember() {
     $username=filter_input(INPUT_POST,'username');
     $password=filter_input(INPUT_POST,'password');    
     if($username && $password) {
-        require_once './db/db.php';
+        require './db/db.php';
         $sql="insert into {$tb_member} (username,password,createtime,state) values('$username','$password',NOW(),1)";
         $res=mysqli_query($conn,$sql);
         if ($res) {
@@ -281,6 +323,33 @@ function addmember() {
     
     
 }
+function addmembergroup() {
+    $arr=array(
+        "errorMsg"=>"提交数据错误！！",
+        "successMsg"=>"添加管理组成功！！"
+        );
+    $groupname=filter_input(INPUT_POST,'groupname');
+    $groupdes=filter_input(INPUT_POST,'groupdes');    
+    $groupvalue=filter_input(INPUT_POST,'groupvalue');    
+    if($groupname) {
+        require './db/db.php';
+        $sql="insert into {$tb_membergroup} (`groupname`,`groupdes`,`groupvalue`) values('$groupname','$groupdes','$groupvalue')";
+        $res=mysqli_query($conn,$sql);
+        if ($res) {
+            unset($arr['errorMsg']);
+            echo json_encode($arr);
+        } else {
+           $arr['errorMsg']='添加组失败！！' . $sql . mysqli_error($conn);
+           echo json_encode($arr);
+        }
+        mysqli_close($conn);
+    } else {
+        echo json_encode($arr);
+    }
+    
+    
+}
+
 
 function addarea() {
     $arr=array(
@@ -293,7 +362,7 @@ function addarea() {
     $tel=filter_input(INPUT_POST,'tel');
     $yuancheng=filter_input(INPUT_POST,'yuancheng');
     if($areaid && $areaname && $qq && $tel && $yuancheng) {
-        require_once './db/db.php';
+        require './db/db.php';
         $sql="insert into {$tb_area} (areaid,areaname,qq,tel,yuancheng) values ('$areaid','$areaname','$qq','$tel','$yuancheng')";
         $res=mysqli_query($conn,$sql);
         if ($res) {
@@ -315,7 +384,7 @@ function addareacomment(){
     $memo=filter_input(INPUT_POST,'memo');
 
     if($areaid && $memo) {
-        require_once './db/db.php';
+        require './db/db.php';
         $sql="insert into {$tb_areacomment} (areaID,memo,updatetime) values ('$areaid','$memo',now())";
         $res=mysqli_query($conn,$sql);
         if ($res) {
@@ -351,7 +420,7 @@ function adduser(){
         "successMsg"=>"开通成功！！"
     );
     if ($username && $password && ($pool!==NULL and $pool!==false) && $type && $expiration) {
-            require_once './db/db.php';
+            require './db/db.php';
             mysqli_begin_transaction($conn);
             $timstramp= strtotime($expiration);
             $exp=date("d M Y H:i:s",$timstramp);
@@ -387,7 +456,7 @@ function getanalyze(){
     $sort==='pool_name'?$sort='(pool_name+0)':0;
     $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
     $result=array();
-    require_once './db/db.php';
+    require './db/db.php';
     
     if ($searchvalue) {          
         $sql="SELECT count(DISTINCT(pool_name)) from {$tb_ippool} where pool_name='$searchvalue'";
@@ -400,6 +469,7 @@ function getanalyze(){
                 . "count(case when {$tb_ippool}.used=0 then 1 else null end) as unused_count,"
                 . "count(case when {$tb_ippool}.used=1 then 1 else null end)  as using_count,"
                 . "count(case when {$tb_ippool}.used=2 then 1 else null end) as used_count,"
+                . "count(case when {$tb_ippool}.used=3 then 1 else null end) as redialing_count,"
                 . "count(case when {$tb_ippool}.belong=1 then 1 else null end) as reserved_count  "
                 . "from {$tb_ippool},webarea where {$tb_ippool}.pool_name='$searchvalue' and webarea.areaid={$tb_ippool}.pool_name group by  {$tb_ippool}.pool_name order by {$sort} {$order}";
  
@@ -413,6 +483,7 @@ function getanalyze(){
                 . "count(case when {$tb_ippool}.used=0 then 1 else null end) as unused_count,"
                 . "count(case when {$tb_ippool}.used=1 then 1 else null end)  as using_count,"
                 . "count(case when {$tb_ippool}.used=2 then 1 else null end) as used_count,"
+                . "count(case when {$tb_ippool}.used=3 then 1 else null end) as redialing_count,"
                 . "count(case when {$tb_ippool}.belong=1 then 1 else null end) as reserved_count  "
                  . "  from {$tb_ippool},webarea   where webarea.areaid={$tb_ippool}.pool_name group by  {$tb_ippool}.pool_name order by {$sort} {$order} limit {$offset},{$rows}";         
         
@@ -438,7 +509,7 @@ function getuser(){
     $rows?0:$rows=20;
     $offset=($page*$rows-$rows);
     $result=array();
-    require_once './db/db.php';    
+    require './db/db.php';    
     if ($searchname){
         switch($searchname) {
             case 'username':
@@ -483,7 +554,7 @@ function getuser(){
 function getareacomment(){
     $id=filter_input(INPUT_GET,'id');
     $areaname=filter_input(INPUT_GET,'areaname');
-    require_once './db/db.php';
+    require './db/db.php';
     $rs=mysqli_query($conn,"select updatetime,memo from {$tb_areacomment}  where areaID='$id' order by id  limit 3");
     echo '<span>' . $areaname . '</span><br/>';
     while($row=mysqli_fetch_row($rs)) {
@@ -517,7 +588,7 @@ function getarea($tag){
     $rows?0:$rows=20;
     $offset=($page*$rows-$rows);
     $result=array();
-    require_once './db/db.php';
+    require './db/db.php';
     $rs=mysqli_query($conn,"select count(*) from $tb_area");
     $row=mysqli_fetch_row($rs);
     $result['total']=$row[0];
@@ -551,8 +622,9 @@ function getarea($tag){
 }
 
 function getnas() {
+    
     $result=array();
-    require_once './db/db.php';
+    require './db/db.php';    
     $sql="select nas.nasname as nasname,
                  nas.secret as secret,
                  nas.shortname as shortname,
@@ -579,9 +651,21 @@ function getnas() {
     echo json_encode($items);
 }
 
+function getmembergroup() {
+    $result=array();
+    require './db/db.php';
+    $sql="select * from {$tb_membergroup}";
+    $rs=mysqli_query($conn,$sql) ;
+    $items=array();
+    while($row=mysqli_fetch_object($rs)) {
+        array_push($items,$row);
+    }
+    echo json_encode($items);
+}
+
 function getmember() {
      $result=array();
-    require_once './db/db.php';
+    require './db/db.php';
     $rs=mysqli_query($conn,"select username,password,createtime,state from {$tb_member}") ;
     $items=array();
     while($row=mysqli_fetch_object($rs)) {
@@ -600,7 +684,7 @@ function getonlineuser() {
     $rows?0:$rows=20;
     $offset=($page*$rows-$rows);
     $result=array();
-    require_once './db/db.php';    
+    require './db/db.php';    
     if($searchname) {
         switch($searchname) {
             case 'username':
@@ -680,12 +764,14 @@ function getlog(){
     $rows= filter_input(INPUT_POST,'rows');
     $searchname= filter_input(INPUT_POST,'searchname');
     $searchvalue=filter_input(INPUT_POST,'searchvalue');
+    
     if ($searchname) {
-            $searchname= 'LOG-' . str_replace('-', '', $searchname);
+            //$searchname= 'LOG-' . str_replace('-', '', $searchname);
     } else {
         $searchname=date("Y-m-d");
-        $searchname= 'LOG-' . str_replace('-', '', $searchname);
+        //$searchname= 'LOG-' . str_replace('-', '', $searchname);
     }
+    
     $page?0:$page=1;
     $rows?0:$rows=10;
     $offset=($page*$rows-$rows);
@@ -728,7 +814,7 @@ function getip(){
     $rows?0:$rows=20;
     $offset=($page*$rows-$rows);
     $result=array();
-    require_once './db/db.php';
+    require './db/db.php';
     $searchname=trim($searchname);
     
     if ($searchname) {  
@@ -799,7 +885,7 @@ function removeuser(){
         echo json_encode($arr);
         exit(0);
     }
-    require_once './db/db.php';
+    require './db/db.php';
     $res= mysqli_begin_transaction($conn);
     $res1=mysqli_query($conn,"delete from {$tb_check} where username='$username'");
     $res2=mysqli_query($conn,"delete from radreply where username='$username'");
@@ -827,7 +913,7 @@ function removearea(){
         exit(0);
     }   
    
-    require_once './db/db.php';
+    require './db/db.php';
     $sql="delete from {$tb_area} where areaid='$idstr'";
     $res1=mysqli_query($conn,$sql);
     if ($res1) {
@@ -852,7 +938,7 @@ function removenas(){
         exit(0);
     }   
    
-    require_once './db/db.php';
+    require './db/db.php';
     $sql="delete from nas where nasname='$idstr'";
     $res1=mysqli_query($conn,$sql);
     if ($res1) {
@@ -876,7 +962,7 @@ function removemember(){
         exit(0);
     }   
    
-    require_once './db/db.php';
+    require './db/db.php';
     $sql="delete from dbmembers where username='$idstr'";
     $res1=mysqli_query($conn,$sql);
     if ($res1) {
@@ -890,7 +976,29 @@ function removemember(){
     }
     echo json_encode($arr);
 }
-
+function removemembergroup(){
+    $idstr= filter_input(INPUT_POST,'idstr');    
+    $arr=array();
+    if  (!$idstr) {
+        $arr['errorMsg']="接收组数据错误！！"; 
+        echo json_encode($arr);
+        exit(0);
+    }   
+   
+    require './db/db.php';
+    $sql="delete from {$tb_membergroup} where groupname='$idstr'";
+    $res1=mysqli_query($conn,$sql);
+    if ($res1) {
+        $arr['success']=" 删除组  $idstr   成功 " ;
+        echo json_encode($arr);
+        exit(0);
+    } else {
+        $arr['errorMsg']='删除失败，数据不完整！！';
+        echo json_encode($arr);
+        exit(0);
+    }
+    echo json_encode($arr);
+}
 function disconnect() {
     $nas=filter_input(INPUT_POST,'nas');    
     $username=filter_input(INPUT_POST,'username');
@@ -926,4 +1034,39 @@ function disconnect() {
     }
  
 }
+
+
+function aclfilter($type) {
+    $acl=array();
+    $username=$_SESSION['username'];
+    if ($username) {    
+            require './db/db.php';
+            $sql="select groupvalue as groupvalue from {$tb_membergroup},{$tb_member} where {$tb_member}.username='{$username}' and {$tb_membergroup}.id={$tb_member}.groupid  limit 1";
+            
+            $rs=mysqli_query($conn,$sql);
+            $acl=mysqli_fetch_row($rs);
+            $acl=json_decode($acl[0]);
+            mysqli_close($conn);
+            foreach($acl as $menu=>$value) {                
+                if ($value->checked) {
+                    foreach($value->children as $submenu=>$subvalue) {         
+                        
+                        if ($subvalue->checked) {
+                            if ($cmdname[$subvalue->text]===$type) {
+                                return true;
+                            }
+                        }                        
+                    }                  
+                }  
+                
+            }
+            return false;
+            
+    } else {
+        return false;
+    }
+    return false;
+}
+
+
 ?>

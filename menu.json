@@ -1,0 +1,91 @@
+[
+    {
+        "id": 1,
+        "text": "全局设置",
+        "iconCls": "icon-add",
+        "children": [
+            {
+                "text": "NAS管理",
+                "checked": true
+                "attributes": {
+                    "name": "nas"
+                }
+            },
+            {
+                "text": "地区管理",
+                "state": "open",
+                "attributes": {
+                    "name": "area"
+                }
+                
+            },
+            {
+                "text":"IP管理",
+                "state":"open",
+                "checked":true,
+                "attributes": {
+                    "name": "ip"
+                }
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "text": "会员管理",
+        "state": "closed",
+        "children": [
+            {
+                "text": "会员管理",
+                "attributes": {
+                    "name": "member"
+                }
+            },
+            {
+                "text": "组管理",
+                "attributes": {
+                    "name": "membergroup"
+                }
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "text": "用户管理",
+        "state": "closed",
+        "children": [
+            {
+                "text": "用户管理",
+                "attributes": {
+                    "name": "user"
+                }
+            },
+            {
+                "text": "在线用户",
+                "attributes": {
+                    "name": "onlineuser"
+                }
+            }
+        ]
+    },
+       {
+        "id": 4,
+        "text": "系统状态",
+        "state": "closed",
+        "children": [
+            {
+                "text": "线路统计",
+                "attributes": {
+                    "name": "analyze"
+                }
+            },
+            {
+                "text": "上网日志",
+                "attributes": {
+                    "name": "log"
+                }
+            }
+        ]
+    }
+
+
+]
