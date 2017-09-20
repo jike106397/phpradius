@@ -10,7 +10,7 @@ $cmdname=array('NAS管理'=>'nas',
 						"线路统计"=>'analyze',
 						"上网日志"=>'log');
 
-$host='radius.dshoub.cn';
+$host='www.a.com';
 $user='root';
 $pass='jike@1988';
 

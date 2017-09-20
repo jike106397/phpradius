@@ -229,15 +229,16 @@ function editmember() {
         );
     $username=filter_input(INPUT_POST,'username');
     $password=filter_input(INPUT_POST,'password');   
+    $groupid=filter_input(INPUT_POST,'groupname');   
     if($username && $password) {
-        require './db/db.php';
-        $sql="update {$tb_member} set password='$password' where username='$username'";
+        require './db/db.php';        
+        $sql="update {$tb_member} set password='$password',groupid={$groupid} where username='$username'";
         $res=mysqli_query($conn,$sql);
         if ($res) {
             unset($arr['errorMsg']);
             echo json_encode($arr);
         } else {
-           $arr['errorMsg']='修改会员失败！！' . mysqli_error($conn);
+           $arr['errorMsg']='修改会员失败！！' . $sql . mysqli_error($conn);
            echo json_encode($arr);
         }
         mysqli_close($conn);
@@ -666,7 +667,7 @@ function getmembergroup() {
 function getmember() {
      $result=array();
     require './db/db.php';
-    $rs=mysqli_query($conn,"select username,password,createtime,state from {$tb_member}") ;
+    $rs=mysqli_query($conn,"select username,password,createtime,state,groupname from {$tb_member},{$tb_membergroup} where {$tb_membergroup}.id={$tb_member}.groupid") ;
     $items=array();
     while($row=mysqli_fetch_object($rs)) {
         array_push($items,$row);

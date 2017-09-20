@@ -203,7 +203,8 @@ $('#menu').accordion({
                                     {title:'会员名',field:'username',width:100},
                                     {title:'密码',field:'password',width:100},
                                     {title:'开通时间',field:'createtime',width:200},
-                                    {title:'状态',field:'state',width:100}
+                                    {title:'状态',field:'state',width:100},
+                                    {title:'用户组',field:'groupname',width:200}
                                                            
                             ]],
                             onDblClickRow:function(rowIndex,rowData){
